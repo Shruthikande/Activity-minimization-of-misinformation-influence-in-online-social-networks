@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}MisInfo Network{% endblock %}</title>
+    <link href="{{ url_for('static', filename='css/style.css') }}" rel="stylesheet">
+</head>
+<body>
+<nav class="navbar">
+    <a class="navbar-brand" href="{{ url_for('home') }}">MisInfo Network</a>
+    <div class="navbar-links">
+        {% if session.get('user') and not session.get('is_admin') %}
+            <a href="{{ url_for('dashboard') }}" class="btn btn-sm btn-outline-light">Dashboard</a>
+            <a href="{{ url_for('feed') }}" class="btn btn-sm btn-outline-light">Feed</a>
+            <a href="{{ url_for('friends') }}" class="btn btn-sm btn-outline-light">Friends</a>
+            <a href="{{ url_for('posts') }}" class="btn btn-sm btn-outline-light">New Post</a>
+            <a href="{{ url_for('logout') }}" class="btn btn-sm btn-danger">Logout</a>
+        {% elif session.get('is_admin') %}
+            <a href="{{ url_for('admin_dashboard') }}" class="btn btn-sm btn-outline-light">Admin Home</a>
+            <a href="{{ url_for('admin_users') }}" class="btn btn-sm btn-outline-light">Users</a>
+            <a href="{{ url_for('admin_filters') }}" class="btn btn-sm btn-outline-light">Filter Words</a>
+            <a href="{{ url_for('admin_all_posts') }}" class="btn btn-sm btn-outline-light">All Posts</a>
+            <a href="{{ url_for('admin_flagged') }}" class="btn btn-sm btn-outline-light">Flagged Content</a>
+            <a href="{{ url_for('admin_logout') }}" class="btn btn-sm btn-danger">Logout</a>
+        {% else %}
+            <a href="{{ url_for('login') }}" class="btn btn-sm btn-outline-light">User Login</a>
+            <a href="{{ url_for('admin_login') }}" class="btn btn-sm btn-outline-light">Admin Login</a>
+        {% endif %}
+    </div>
+</nav>
+
+<div class="container mt-4">
+    {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            {% for m in messages %}
+                <div class="alert">{{ m }}</div>
+            {% endfor %}
+        {% endif %}
+    {% endwith %}
+
+    {% block content %}{% endblock %}
+</div>
+</body>
+</html>

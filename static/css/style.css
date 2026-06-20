@@ -1,0 +1,627 @@
+/* ===========================================================
+   MisInfo Network — plain CSS stylesheet (no framework)
+   This file replaces Bootstrap entirely. It defines every
+   layout/component class used across the templates: navbar,
+   container, buttons, cards, tables, lists, forms, alerts.
+   =========================================================== */
+
+:root {
+    --brand-navy: #1b2336;
+    --brand-navy-dark: #11151f;
+    --brand-red: #d62839;
+    --brand-red-dark: #a91f2c;
+    --brand-green: #2e8b57;
+    --brand-green-dark: #226844;
+    --brand-yellow: #d6a019;
+    --brand-yellow-dark: #b3850f;
+    --brand-light: #f4f6fb;
+    --border-color: #dde1ea;
+    --text-muted: #6b7280;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    background-color: var(--brand-light);
+    font-family: "Segoe UI", Roboto, Arial, sans-serif;
+    color: #1f2433;
+    line-height: 1.5;
+}
+
+a {
+    color: var(--brand-navy);
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    margin-top: 0;
+    color: var(--brand-navy);
+}
+
+hr {
+    border: none;
+    border-top: 1px solid var(--border-color);
+    margin: 1.5rem 0;
+}
+
+/* ---------- Layout helpers ---------- */
+.container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 1.25rem;
+}
+
+.row {
+    display: flex;
+    flex-wrap: wrap;
+    margin: -0.5rem;
+}
+
+.row > [class*="col"] {
+    padding: 0.5rem;
+    box-sizing: border-box;
+}
+
+.col-12 { width: 100%; }
+.col-6  { width: 50%; }
+.col-4  { width: 33.333%; }
+.col-3  { width: 25%; }
+
+@media (max-width: 700px) {
+    .col-6, .col-4, .col-3 {
+        width: 100%;
+    }
+}
+
+.justify-center {
+    justify-content: center;
+}
+
+.flex-between {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.text-muted {
+    color: var(--text-muted);
+}
+
+.mt-4 { margin-top: 1.5rem; }
+.mb-4 { margin-bottom: 1.5rem; }
+.mb-3 { margin-bottom: 1rem; }
+.mb-2 { margin-bottom: 0.5rem; }
+.mb-0 { margin-bottom: 0; }
+.mt-3 { margin-top: 1rem; }
+.pb-5 { padding-bottom: 3rem; }
+
+/* ---------- Navbar ---------- */
+.navbar {
+    background-color: var(--brand-navy);
+    color: #fff;
+    padding: 0.75rem 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.navbar-brand {
+    color: #fff;
+    font-size: 1.25rem;
+    font-weight: 700;
+}
+
+.navbar-brand:hover {
+    text-decoration: none;
+    color: #fff;
+}
+
+.navbar-links {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+}
+
+/* ---------- Buttons ---------- */
+.btn {
+    display: inline-block;
+    padding: 0.5rem 1rem;
+    border-radius: 6px;
+    border: 1px solid transparent;
+    font-size: 0.95rem;
+    cursor: pointer;
+    text-align: center;
+    text-decoration: none;
+    background-color: var(--brand-navy);
+    color: #fff;
+    transition: background-color 0.15s ease, color 0.15s ease, border-color 0.15s ease;
+}
+
+.btn:hover {
+    background-color: var(--brand-navy-dark);
+    text-decoration: none;
+    color: #fff;
+}
+
+.btn-sm {
+    padding: 0.3rem 0.7rem;
+    font-size: 0.85rem;
+}
+
+.btn-block {
+    display: block;
+    width: 100%;
+}
+
+.btn-primary {
+    background-color: var(--brand-navy);
+    border-color: var(--brand-navy);
+    color: #fff;
+}
+
+.btn-primary:hover {
+    background-color: var(--brand-navy-dark);
+}
+
+.btn-outline {
+    background-color: transparent;
+    color: var(--brand-navy);
+    border-color: var(--brand-navy);
+}
+
+.btn-outline:hover {
+    background-color: var(--brand-navy);
+    color: #fff;
+}
+
+.btn-outline-light {
+    background-color: transparent;
+    color: #fff;
+    border-color: rgba(255, 255, 255, 0.5);
+}
+
+.btn-outline-light:hover {
+    background-color: var(--brand-red);
+    border-color: var(--brand-red);
+    color: #fff;
+}
+
+.btn-danger {
+    background-color: var(--brand-red);
+    border-color: var(--brand-red);
+    color: #fff;
+}
+
+.btn-danger:hover {
+    background-color: var(--brand-red-dark);
+}
+
+.btn-outline-danger {
+    background-color: transparent;
+    color: var(--brand-red);
+    border-color: var(--brand-red);
+}
+
+.btn-outline-danger:hover {
+    background-color: var(--brand-red);
+    color: #fff;
+}
+
+.btn-success {
+    background-color: var(--brand-green);
+    border-color: var(--brand-green);
+    color: #fff;
+}
+
+.btn-success:hover {
+    background-color: var(--brand-green-dark);
+}
+
+.btn-warning {
+    background-color: var(--brand-yellow);
+    border-color: var(--brand-yellow);
+    color: #1f2433;
+}
+
+.btn-warning:hover {
+    background-color: var(--brand-yellow-dark);
+}
+
+.btn + .btn {
+    margin-left: 0.5rem;
+}
+
+/* ---------- Forms ---------- */
+form {
+    margin: 0;
+}
+
+.field {
+    margin-bottom: 1rem;
+}
+
+.field label {
+    display: block;
+    margin-bottom: 0.3rem;
+    font-weight: 600;
+    font-size: 0.9rem;
+    color: var(--brand-navy);
+}
+
+input[type="text"],
+input[type="password"],
+input[type="email"],
+input[type="search"],
+input:not([type]),
+textarea,
+select {
+    width: 100%;
+    padding: 0.55rem 0.75rem;
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    font-size: 0.95rem;
+    font-family: inherit;
+    background-color: #fff;
+    color: #1f2433;
+}
+
+input:focus,
+textarea:focus,
+select:focus {
+    outline: none;
+    border-color: var(--brand-navy);
+    box-shadow: 0 0 0 3px rgba(27, 35, 54, 0.12);
+}
+
+textarea {
+    resize: vertical;
+}
+
+input[type="file"] {
+    width: 100%;
+    padding: 0.4rem 0;
+    font-size: 0.9rem;
+    background: transparent;
+    border: none;
+}
+
+.form-inline {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.form-inline input {
+    flex: 1;
+}
+
+/* ---------- Cards ---------- */
+.card {
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+    padding: 1.25rem;
+}
+
+.card h2 {
+    margin: 0.25rem 0 0;
+    font-size: 1.8rem;
+}
+
+.card h5, .card h6 {
+    margin-bottom: 0.4rem;
+    color: var(--text-muted);
+    font-weight: 600;
+}
+
+/* ---------- Auth cards (login / register) ---------- */
+.auth-card {
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08);
+    padding: 2rem;
+    max-width: 420px;
+    margin: 0 auto;
+}
+
+.auth-card h3 {
+    font-weight: 700;
+    margin-bottom: 1.25rem;
+}
+
+/* ---------- Hero / banner section ---------- */
+.hero-banner {
+    width: 100%;
+    max-height: 280px;
+    object-fit: cover;
+    border-radius: 0 0 12px 12px;
+    margin-bottom: 1.5rem;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.15);
+    display: block;
+}
+
+.hero-section {
+    background-color: var(--brand-navy);
+    color: #fff;
+    margin-bottom: 2rem;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.15);
+}
+
+.hero-section img {
+    width: 100%;
+    max-height: 260px;
+    object-fit: cover;
+    display: block;
+}
+
+.hero-section .hero-text {
+    padding: 1.5rem 2rem;
+    text-align: center;
+}
+
+.hero-section .hero-text h1 {
+    color: #fff;
+    font-size: 1.9rem;
+    font-weight: 700;
+}
+
+.hero-section .hero-text p {
+    color: #cfd4e0;
+    margin-bottom: 0;
+}
+
+/* ---------- Lists ---------- */
+.list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    overflow: hidden;
+    background: #fff;
+}
+
+.list li {
+    padding: 0.75rem 1rem;
+    border-bottom: 1px solid var(--border-color);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.list li:last-child {
+    border-bottom: none;
+}
+
+/* ---------- Tables ---------- */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    background: #fff;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+th, td {
+    padding: 0.65rem 0.85rem;
+    border: 1px solid var(--border-color);
+    text-align: left;
+    font-size: 0.95rem;
+}
+
+th {
+    background-color: var(--brand-navy);
+    color: #fff;
+    font-weight: 600;
+}
+
+tbody tr:nth-child(even) {
+    background-color: #fafbfd;
+}
+
+/* ---------- Alerts / flash messages ---------- */
+.alert {
+    padding: 0.85rem 1rem;
+    border-radius: 8px;
+    margin-bottom: 1rem;
+    background-color: #eef1fb;
+    border: 1px solid #d7ddf3;
+    color: var(--brand-navy);
+}
+
+/* ---------- Chat box ---------- */
+.chat-box {
+    height: 300px;
+    overflow-y: auto;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    padding: 1rem;
+    margin-bottom: 1rem;
+    background: #fff;
+}
+
+.chat-box p {
+    margin: 0 0 0.5rem;
+}
+
+/* ---------- Post card ---------- */
+.post-card {
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+    padding: 1.1rem 1.25rem;
+    margin-bottom: 1rem;
+}
+
+.post-card h5 {
+    margin: 0 0 0.3rem;
+}
+
+.post-image {
+    width: 100%;
+    max-height: 280px;
+    object-fit: cover;
+    border-radius: 8px;
+    margin-bottom: 0.75rem;
+    display: block;
+}
+
+.post-image-full {
+    width: 100%;
+    max-height: 420px;
+    object-fit: cover;
+    border-radius: 10px;
+    display: block;
+}
+
+.comment-row {
+    padding: 0.6rem 0;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.comment-row:last-child {
+    border-bottom: none;
+}
+
+/* ---------- Post meta (likes / comments count on feed) ---------- */
+.post-meta {
+    display: flex;
+    gap: 1.25rem;
+    color: var(--text-muted);
+    font-size: 0.85rem;
+}
+
+/* ---------- Badges ---------- */
+.badge {
+    display: inline-block;
+    padding: 0.15rem 0.55rem;
+    border-radius: 999px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    margin-left: 0.4rem;
+}
+
+.badge-flagged {
+    background-color: #fdeaea;
+    color: var(--brand-red-dark);
+}
+
+.badge-ok {
+    background-color: #e7f5ec;
+    color: var(--brand-green-dark);
+}
+
+.badge-blocked {
+    background-color: #fdf0e0;
+    color: var(--brand-yellow-dark);
+}
+
+/* ---------- Like button ---------- */
+.like-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    padding: 0.45rem 0.9rem;
+    border-radius: 999px;
+    border: 1px solid var(--brand-red);
+    color: var(--brand-red);
+    background-color: #fff;
+    font-size: 0.9rem;
+    font-weight: 600;
+    text-decoration: none;
+    transition: background-color 0.15s ease, color 0.15s ease;
+}
+
+.like-btn:hover {
+    background-color: #fdeaea;
+    text-decoration: none;
+}
+
+.like-btn.liked {
+    background-color: var(--brand-red);
+    color: #fff;
+}
+
+.like-btn .like-icon {
+    font-size: 0.9rem;
+}
+
+.like-btn .like-count {
+    background-color: rgba(0, 0, 0, 0.08);
+    border-radius: 999px;
+    padding: 0.05rem 0.5rem;
+    font-size: 0.8rem;
+}
+
+.like-btn.liked .like-count {
+    background-color: rgba(255, 255, 255, 0.25);
+}
+
+/* ---------- Comments ---------- */
+.comments-section {
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+    padding: 1.25rem;
+    margin-top: 1.25rem;
+}
+
+.comment-card {
+    display: flex;
+    gap: 0.75rem;
+    padding: 0.75rem 0;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.comment-card:last-of-type {
+    border-bottom: none;
+}
+
+.comment-avatar {
+    width: 36px;
+    height: 36px;
+    min-width: 36px;
+    border-radius: 50%;
+    background-color: var(--brand-navy);
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 0.95rem;
+}
+
+.comment-body {
+    flex: 1;
+}
+
+.comment-author {
+    font-weight: 600;
+    color: var(--brand-navy);
+    font-size: 0.9rem;
+    margin-bottom: 0.15rem;
+}
+
+.comment-text {
+    color: #1f2433;
+    font-size: 0.95rem;
+}
+
+.comment-form textarea {
+    margin-bottom: 0.5rem;
+}

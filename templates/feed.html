@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% block title %}Feed{% endblock %}
+{% block content %}
+<h3>Feed</h3>
+{% for p in posts %}
+<div class="post-card">
+    {% if p.image_filename %}
+        <img src="{{ url_for('static', filename='uploads/' ~ p.image_filename) }}" alt="Post image" class="post-image">
+    {% endif %}
+    <h5><a href="{{ url_for('post_detail', post_id=p.id) }}">{{ p.title }}</a></h5>
+    <p class="text-muted mb-2">by {{ p.sender }} | {{ p.category }}</p>
+    <p class="mb-2">{{ p.description[:150] }}{% if p.description|length > 150 %}...{% endif %}</p>
+    <div class="post-meta">
+        <span>&#10084; {{ p.likes_count }} like{{ 's' if p.likes_count != 1 else '' }}</span>
+        <span>&#128172; {{ p.comments_count }} comment{{ 's' if p.comments_count != 1 else '' }}</span>
+    </div>
+</div>
+{% else %}
+<p class="text-muted">No posts yet.</p>
+{% endfor %}
+{% endblock %}
