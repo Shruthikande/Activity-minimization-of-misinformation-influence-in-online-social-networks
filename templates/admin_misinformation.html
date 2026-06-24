@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% block title %}Flagged Content{% endblock %}
+{% block content %}
+<h3>Flagged Posts</h3>
+<table class="mb-4">
+<thead><tr><th>Sender</th><th>Title</th><th>Description</th><th></th></tr></thead>
+<tbody>
+{% for p in posts %}
+<tr>
+    <td>{{ p.sender }}</td><td>{{ p.title }}</td><td>{{ p.description[:80] }}</td>
+    <td><a href="{{ url_for('delete_post', post_id=p.id) }}" class="btn btn-sm btn-danger">Delete</a></td>
+</tr>
+{% else %}<tr><td colspan="4" class="text-muted">No flagged posts.</td></tr>{% endfor %}
+</tbody>
+</table>
+
+<h3>Flagged Comments</h3>
+<table>
+<thead><tr><th>User</th><th>Comment</th></tr></thead>
+<tbody>
+{% for c in comments %}
+<tr><td>{{ c.username }}</td><td>{{ c.comment }}</td></tr>
+{% else %}<tr><td colspan="2" class="text-muted">No flagged comments.</td></tr>{% endfor %}
+</tbody>
+</table>
+{% endblock %}
